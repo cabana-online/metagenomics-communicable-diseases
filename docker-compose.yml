@@ -1,0 +1,66 @@
+version: "3"
+
+services:
+
+  blast:
+    image: ncbi/blast:2.10.0
+    container_name: "cabana_tutorial_2--blast"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  bmtagger:
+    image: cabanaonline/bmtagger:1.0
+    container_name: "cabana_tutorial_2--bmtagger"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  enveomics:
+    image: cabanaonline/enveomics:1.0
+    container_name: "cabana_tutorial_2--enveomics"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  fastqc:
+    image: cabanaonline/fastqc:1.0
+    container_name: "cabana_tutorial_2--fastqc"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  multiqc:
+    image: cabanaonline/multiqc:1.0
+    container_name: "cabana_tutorial_2--multiqc"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  seqtk:
+    image: cabanaonline/seqtk:1.0
+    container_name: "cabana_tutorial_2--seqtk"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  trimmomatic:
+    image: cabanaonline/trimmomatic:1.0
+    container_name: "cabana_tutorial_2--trimmomatic"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
