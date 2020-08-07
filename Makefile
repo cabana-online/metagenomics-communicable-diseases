@@ -57,10 +57,12 @@ qc-run-step-3:
 qc-run-step-4:
 	docker exec -ti cabana_tutorial_2--bmtagger /bin/bash -c "/home/cabana/scripts/_quality-control--step-4.sh"
 
+qc-run-step-5:
+	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_quality-control--step-5.sh"
 
 prepare-tutorial : download-data decompress-data seqtk-data
 
-run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4
+run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4 qc-run-step-5
 
 tutorial: prepare-tutorial run-quality-control
 
