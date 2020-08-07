@@ -9,7 +9,7 @@ fi
 cd tmp
 
 Input_Directory=/home/cabana/CABANA/02.Quality_Control/step2_Trimmomatic
-Output_Directory=/home/cabana/CABANA/02.Quality_Control/step3_BMTagger
+Output_Directory=/home/cabana/CABANA/02.Quality_Control/step3_BMTagger/output
 Reference_Directory=/home/cabana/CABANA/02.Quality_Control/step3_BMTagger/Reference
 Temporal_Directory=/home/cabana/CABANA/02.Quality_Control/step3_BMTagger/tmp
 

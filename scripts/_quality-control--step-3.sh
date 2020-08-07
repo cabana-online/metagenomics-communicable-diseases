@@ -3,11 +3,20 @@
 # Moves to the work directory.
 pushd /home/cabana/CABANA/02.Quality_Control/step3_BMTagger
 
+# Create the references folder.
 if [ ! -d Reference ]; then
+  echo "Creating Reference folder."
   mkdir Reference && chmod -R 777 Reference
 fi
-cd Reference
 
+# Create the output folder used by bmtagger.
+if [ ! -d output ]; then
+  echo "Creating bmtagger output folder."
+  mkdir output && chmod -R 777 output
+fi
+
+# Copies the dataset onto the reference folder.
+cd Reference
 if [ -f /home/cabana/data/hg38.fa ]; then
   mv /home/cabana/data/hg38.fa ./
 fi
