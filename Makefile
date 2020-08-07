@@ -20,6 +20,10 @@ shell-bmtagger :
 	@echo "Accessing runtime container..."
 	docker exec -ti cabana_tutorial_2--bmtagger /bin/bash
 
+shell-enveomics :
+	@echo "Accessing blast container..."
+	docker exec -ti cabana_tutorial_2--enveomics /bin/bash
+
 shell-multiqc :
 	@echo "Accessing multiqc container..."
 	docker exec -ti cabana_tutorial_2--multiqc /bin/bash
