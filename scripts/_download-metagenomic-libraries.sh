@@ -1,20 +1,22 @@
 #!/bin/bash
 
+cd /home/cabana/CABANA
+
 # Creates work directories.
 mkdir -p \
-    /home/cabana/CABANA/00.Raw_MGs \
-    /home/cabana/CABANA/01.Subsampled_MGs \
-    /home/cabana/CABANA/02.Quality_Control \
-    /home/cabana/CABANA/03.CleanLib \
-    /home/cabana/CABANA/04.Coverage \
-    /home/cabana/CABANA/05.Mash \
-    /home/cabana/CABANA/06.Assembly \
-    /home/cabana/CABANA/07.Binning \
-    /home/cabana/CABANA/08.Taxonomy \
-    /home/cabana/CABANA/09.Functional;
+    00.Raw_MGs \
+    01.Subsampled_MGs \
+    02.Quality_Control \
+    03.CleanLib \
+    04.Coverage \
+    05.Mash \
+    06.Assembly \
+    07.Binning \
+    08.Taxonomy \
+    09.Functional;
 
 # Changes to our first working directory.
-cd /home/cabana/CABANA/00.Raw_MGs
+cd 00.Raw_MGs
 
 # Libraries to download.
 declare -A files=(
@@ -38,7 +40,7 @@ declare -A checksums=(
   ["MG73_CTL/SRR8555113/SRR8555113_1.fastq.gz"]=f975c85e7f732190511b611a65d6d34bb0341a77
   ["MG73_CTL/SRR8555113/SRR8555113_2.fastq.gz"]=20e75e6f5c5afd469b3eeb8650fda76cd4642d87
   ["MG52_CTL/SRR8555091/SRR8555091_1.fastq.gz"]=f101c9364ec6f47638f0ca093a1bd6e69cf94171
-  ["MG52_CTL/SRR8555091/SRR8555091_2.fastq.gz"]=20e75e6f5c5afd469b3eeb8650fda76cd4642d87
+  ["MG52_CTL/SRR8555091/SRR8555091_2.fastq.gz"]=2b05679365f0b958585d0d982407ed99a270ca8e
 )
 
 # Downloads each file and moves it to the corresponding folder.
@@ -59,8 +61,6 @@ do
     echo "Files ${file1} and ${file2} already present. Checking files integrity..."
     checksum1=`sha1sum $file1`
     checksum2=`sha1sum $file2`
-
-    echo "${checksum1}: ${file1_sum}"
 
     if [[ $checksum1 = $file1_sum* ]] && [[ $checksum2 = $file2_sum* ]]; then
 
