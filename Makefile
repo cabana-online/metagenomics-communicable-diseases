@@ -24,6 +24,10 @@ shell-enveomics :
 	@echo "Accessing blast container..."
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash
 
+shell-nonpareil :
+	@echo "Accessing nonpareil container..."
+	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash
+
 shell-multiqc :
 	@echo "Accessing multiqc container..."
 	docker exec -ti cabana_tutorial_2--multiqc /bin/bash
@@ -31,6 +35,11 @@ shell-multiqc :
 shell-seqtk :
 	@echo "Accessing multiqc container..."
 	docker exec -ti cabana_tutorial_2--seqtk /bin/bash
+
+r :
+	@echo "Running R prompt..."
+	docker exec -ti cabana_tutorial_2--nonpareil R
+
 
 download-data :
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_download-metagenomic-libraries.sh"
@@ -60,9 +69,14 @@ qc-run-step-4:
 qc-run-step-5:
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_quality-control--step-5.sh"
 
+cv-step-1:
+	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash -c "/home/cabana/scripts/nonpareil.sh"
+
 prepare-tutorial : download-data decompress-data seqtk-data
 
 run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4 qc-run-step-5
+
+run-coverage: cv-step-1
 
 tutorial: prepare-tutorial run-quality-control
 
