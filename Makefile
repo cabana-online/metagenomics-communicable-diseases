@@ -72,11 +72,14 @@ qc-run-step-5:
 cv-step-1:
 	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash -c "/home/cabana/scripts/nonpareil.sh"
 
+cv-step-2:
+	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash -c "/home/cabana/scripts/r.sh"
+
 prepare-tutorial : download-data decompress-data seqtk-data
 
 run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4 qc-run-step-5
 
-run-coverage: cv-step-1
+run-coverage: cv-step-1 cv-step-2
 
 tutorial: prepare-tutorial run-quality-control
 
