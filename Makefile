@@ -44,8 +44,8 @@ r :
 download-data :
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_download-metagenomic-libraries.sh"
 
-decompress-data :
-	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_decompress_metagemonic-libraries.sh"
+uncompress-data :
+	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_uncompress_metagemonic-libraries.sh"
 
 seqtk-data :
 	docker exec -ti cabana_tutorial_2--seqtk /bin/bash -c "/home/cabana/scripts/_seqtk-data-libraries.sh"
@@ -75,7 +75,7 @@ cv-step-1:
 cv-step-2:
 	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash -c "/home/cabana/scripts/r.sh"
 
-prepare-tutorial : download-data decompress-data seqtk-data
+prepare-tutorial : download-data uncompress-data seqtk-data
 
 run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4 qc-run-step-5
 
