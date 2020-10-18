@@ -7,6 +7,9 @@ pushd /home/cabana/CABANA/02.Quality_Control/step3_BMTagger
 if [ ! -d Reference ]; then
   echo "Creating Reference folder."
   mkdir Reference && chmod -R 777 Reference
+else
+  echo "Emptying Reference folder."
+  rm -rf Reference/*
 fi
 
 # Create the output folder used by bmtagger.
