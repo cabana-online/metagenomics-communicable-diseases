@@ -40,7 +40,6 @@ r :
 	@echo "Running R prompt..."
 	docker exec -ti cabana_tutorial_2--nonpareil R
 
-
 download-data :
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_download-metagenomic-libraries.sh"
 
