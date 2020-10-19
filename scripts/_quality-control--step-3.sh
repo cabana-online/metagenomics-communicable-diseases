@@ -18,10 +18,22 @@ if [ ! -d output ]; then
   mkdir output && chmod -R 777 output
 fi
 
+# Checks if uncompressed file exists in order to skip the uncompress step.
+pushd ~/data
+FILE=hg38.fa
+if [[ -f "$FILE.gz" ]]; then
+  echo "Decompressing dataset hg38.fa... (Depending on your system this could take around 5 minutes)."
+  sleep 3
+  gunzip -k $FILE.gz
+fi
+popd
+
 # Copies the dataset onto the reference folder.
 cd Reference
-if [ -f /home/cabana/data/hg38.fa ]; then
-  mv /home/cabana/data/hg38.fa ./
+
+if [ -f /home/cabana/data/$FILE ]; then
+  echo "Moving bmtool database."
+  mv /home/cabana/data/$FILE ./
 fi
 
 echo "Running bmtool... (Depending on your system this could take around 60 minutes)"

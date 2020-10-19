@@ -42,13 +42,3 @@ while [[ $DO_DOWNLOAD = 1 ]]; do
   fi
 
 done
-
-# Checks if uncompressed file exists in order to skip the uncompress step.
-FILE=hg38.fa
-if [[ -f "$FILE" ]]; then
-    echo "$FILE already decompressed. Skipping step.."
-else
-  echo "Decompressing dataset hg38.fa... (Depending on your system this could take around 5 minutes)."
-  sleep 3
-  gunzip -k hg38.fa.gz
-fi
