@@ -56,6 +56,24 @@ services:
       - ./DATA:/home/cabana/data:cached
     entrypoint: ["tail", "-f", "/dev/null"]
 
+  maxbin2:
+    image: cabanaonline/maxbin2:1.0
+    container_name: "cabana_tutorial_2--maxbin2"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  megahit:
+    image: cabanaonline/megahit:1.0
+    container_name: "cabana_tutorial_2--megahit"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
   multiqc:
     image: cabanaonline/multiqc:1.0
     container_name: "cabana_tutorial_2--multiqc"

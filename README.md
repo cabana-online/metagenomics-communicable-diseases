@@ -54,8 +54,15 @@ the results on the `CABANA` folder as described.
   * `make qc-run-step-5` - Quality control step 5 from the tutorial.
 * `make run-coverage` - Runs the coverage steps from the tutorial.
   * `make cv-step-1` - Coverage step 1 from the tutorial.
-  * `make cv-step-2` - Coverage step 1 from the tutorial.
-
+  * `make cv-step-2` - Coverage step 2 from the tutorial.
+* `make run-distance-estimation` - Runs the distance estimation steps from the tutorial.
+  * `make distance-estimation-step-1` - Distance estimation step 1.
+  * `make distance-estimation-step-2` - Distance estimation step 2.
+* `make run-metagenomic-assembly` - Runs the metagenomics assembly steps from the tutorial.
+  * `make metagenomic-assembly-step-1` - Metagenomic assembly script.
+* `make run-binning-clustering` - Runs the binning and clustering steps from the tutorial.
+  * `make binning-step-1` - Binning and clustering step 1.
+ 
 #### Container shell access.
 
 In order to ease the access to the containers the following commands were created.

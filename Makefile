@@ -24,13 +24,17 @@ shell-enveomics :
 	@echo "Accessing blast container..."
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash
 
-shell-nonpareil :
-	@echo "Accessing nonpareil container..."
-	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash
-
 shell-mash :
 	@echo "Accessing mash container..."
 	docker exec -ti cabana_tutorial_2--mash /bin/bash
+
+shell-maxbin2 :
+	@echo "Accessing mash container..."
+	docker exec -ti cabana_tutorial_2--maxbin2 /bin/bash
+
+shell-megahit :
+	@echo "Accessing megahit container..."
+	docker exec -ti cabana_tutorial_2--megahit /bin/bash
 
 shell-multiqc :
 	@echo "Accessing multiqc container..."
@@ -77,16 +81,22 @@ qc-run-step-5:
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_quality-control--step-5.sh"
 
 cv-step-1:
-	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash -c "/home/cabana/scripts/nonpareil.sh"
+	docker exec -ti cabana_tutorial_2--r /bin/bash -c "/home/cabana/scripts/nonpareil.sh"
 
 cv-step-2:
-	docker exec -ti cabana_tutorial_2--nonpareil /bin/bash -c "/home/cabana/scripts/r.sh"
+	docker exec -ti cabana_tutorial_2--r /bin/bash -c "/home/cabana/scripts/r.sh"
 
 distance-estimation-step-1:
 	docker exec -ti cabana_tutorial_2--mash /bin/bash -c "/home/cabana/scripts/_distance-estimation-1.sh"
 
 distance-estimation-step-2:
 	docker exec -ti cabana_tutorial_2--r /bin/bash -c "/home/cabana/scripts/_distance-estimation-2.sh"
+
+metagenomic-assembly-step-1:
+	docker exec -ti cabana_tutorial_2--megahit /bin/bash -c "/home/cabana/scripts/_metagenomic-assembly-1.sh"
+
+binning-step-1:
+	docker exec -ti cabana_tutorial_2--maxbin2 /bin/bash -c "/home/cabana/scripts/_binning-step-1.sh"
 
 prepare-tutorial : download-data uncompress-data seqtk-data
 
@@ -95,6 +105,10 @@ run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-ru
 run-coverage: cv-step-1 cv-step-2
 
 run-distance-estimation: distance-estimation-step-1 distance-estimation-step-2
+
+run-metagenomic-assembly: metagenomic-assembly-step-1
+
+run-binning-clustering: binning-step-1
 
 tutorial: prepare-tutorial run-quality-control
 
