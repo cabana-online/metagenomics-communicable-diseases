@@ -38,15 +38,6 @@ services:
       - ./DATA:/home/cabana/data:cached
     entrypoint: ["tail", "-f", "/dev/null"]
 
-  nonpareil:
-    image: cabanaonline/nonpareil:1.0
-    container_name: "cabana_tutorial_2--nonpareil"
-    volumes:
-      - ./scripts:/home/cabana/scripts:cached
-      - ./CABANA:/home/cabana/CABANA:cached
-      - ./DATA:/home/cabana/data:cached
-    entrypoint: ["tail", "-f", "/dev/null"]
-
   mash:
     image: cabanaonline/mash:1.0
     container_name: "cabana_tutorial_2--mash"
