@@ -47,6 +47,15 @@ services:
       - ./DATA:/home/cabana/data:cached
     entrypoint: ["tail", "-f", "/dev/null"]
 
+  mash:
+    image: cabanaonline/mash:1.0
+    container_name: "cabana_tutorial_2--mash"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
   multiqc:
     image: cabanaonline/multiqc:1.0
     container_name: "cabana_tutorial_2--multiqc"
@@ -68,6 +77,15 @@ services:
   trimmomatic:
     image: cabanaonline/trimmomatic:1.0
     container_name: "cabana_tutorial_2--trimmomatic"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  r:
+    image: cabanaonline/r-env:1.0
+    container_name: "cabana_tutorial_2--r"
     volumes:
       - ./scripts:/home/cabana/scripts:cached
       - ./CABANA:/home/cabana/CABANA:cached
