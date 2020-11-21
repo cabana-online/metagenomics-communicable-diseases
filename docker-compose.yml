@@ -20,6 +20,15 @@ services:
       - ./DATA:/home/cabana/data:cached
     entrypoint: ["tail", "-f", "/dev/null"]
 
+  checkm:
+    image: cabanaonline/checkm:1.0
+    container_name: "cabana_tutorial_2--checkm"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]
+
   enveomics:
     image: cabanaonline/enveomics:1.0
     container_name: "cabana_tutorial_2--enveomics"

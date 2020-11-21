@@ -20,6 +20,10 @@ shell-bmtagger :
 	@echo "Accessing runtime container..."
 	docker exec -ti cabana_tutorial_2--bmtagger /bin/bash
 
+shell-checkm :
+	@echo "Accessing checkm container..."
+	docker exec -ti cabana_tutorial_2--checkm /bin/bash
+
 shell-enveomics :
 	@echo "Accessing blast container..."
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash
@@ -98,6 +102,9 @@ metagenomic-assembly-step-1:
 binning-step-1:
 	docker exec -ti cabana_tutorial_2--maxbin2 /bin/bash -c "/home/cabana/scripts/_binning-step-1.sh"
 
+binning-step-2:
+	docker exec -ti cabana_tutorial_2--checkm /bin/bash -c "/home/cabana/scripts/_binning-step-2.sh"
+
 prepare-tutorial : download-data uncompress-data seqtk-data
 
 run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4 qc-run-step-5
@@ -108,7 +115,7 @@ run-distance-estimation: distance-estimation-step-1 distance-estimation-step-2
 
 run-metagenomic-assembly: metagenomic-assembly-step-1
 
-run-binning-clustering: binning-step-1
+run-binning-clustering: binning-step-1 binning-step-2
 
 tutorial: prepare-tutorial run-quality-control
 

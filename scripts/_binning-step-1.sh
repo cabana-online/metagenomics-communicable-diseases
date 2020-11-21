@@ -4,7 +4,7 @@
 pushd /home/cabana/CABANA/07.Binning
 
 # Clears the folder before starting work.
-rm *
+rm -rf *
 
 echo "Performing binning. This should take around 45 minutes."
 for i in $(ls ../03.CleanLib/*.CoupledReads.fa); do
