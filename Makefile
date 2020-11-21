@@ -40,6 +40,10 @@ shell-megahit :
 	@echo "Accessing megahit container..."
 	docker exec -ti cabana_tutorial_2--megahit /bin/bash
 
+shell-metaphlan2 :
+	@echo "Accessing metaphlan2 container..."
+	docker exec -ti cabana_tutorial_2--metaphlan2 /bin/bash
+
 shell-multiqc :
 	@echo "Accessing multiqc container..."
 	docker exec -ti cabana_tutorial_2--multiqc /bin/bash
@@ -105,6 +109,9 @@ binning-step-1:
 binning-step-2:
 	docker exec -ti cabana_tutorial_2--checkm /bin/bash -c "/home/cabana/scripts/_binning-step-2.sh"
 
+taxonomy-step-1:
+	docker exec -ti cabana_tutorial_2--metaphlan2 /bin/bash -c "/home/cabana/scripts/_taxonomy-step-1.sh"
+
 prepare-tutorial : download-data uncompress-data seqtk-data
 
 run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4 qc-run-step-5
@@ -116,6 +123,8 @@ run-distance-estimation: distance-estimation-step-1 distance-estimation-step-2
 run-metagenomic-assembly: metagenomic-assembly-step-1
 
 run-binning-clustering: binning-step-1 binning-step-2
+
+run-taxonomy: taxonomy-step-1
 
 tutorial: prepare-tutorial run-quality-control
 
