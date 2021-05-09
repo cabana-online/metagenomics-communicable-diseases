@@ -118,3 +118,12 @@ services:
       - ./CABANA:/home/cabana/CABANA:cached
       - ./DATA:/home/cabana/data:cached
     entrypoint: ["tail", "-f", "/dev/null"]
+
+  stamp:
+    image: cabanaonline/stamp:1.0
+    container_name: "cabana_tutorial_2--stamp"
+    volumes:
+      - ./scripts:/home/cabana/scripts:cached
+      - ./CABANA:/home/cabana/CABANA:cached
+      - ./DATA:/home/cabana/data:cached
+    entrypoint: ["tail", "-f", "/dev/null"]

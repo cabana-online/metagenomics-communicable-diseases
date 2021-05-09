@@ -56,6 +56,10 @@ shell-seqtk :
 	@echo "Accessing multiqc container..."
 	docker exec -ti cabana_tutorial_2--seqtk /bin/bash
 
+shell-stamp :
+	@echo "Accessing stamp container..."
+	docker exec -ti cabana_tutorial_2--stamp /bin/bash
+
 r :
 	@echo "Running R prompt..."
 	docker exec -ti cabana_tutorial_2--r R
@@ -112,6 +116,9 @@ binning-step-2:
 taxonomy-step-1:
 	docker exec -ti cabana_tutorial_2--metaphlan2 /bin/bash -c "/home/cabana/scripts/_taxonomy-step-1.sh"
 
+taxonomy-step-2:
+	docker container run -it --env="DISPLAY" --net=host cabanaonline/stamp:1.0
+
 prepare-tutorial : download-data uncompress-data seqtk-data
 
 run-quality-control : qc-prepare qc-run-step-1 qc-run-step-2 qc-run-step-3 qc-run-step-4 qc-run-step-5
@@ -124,7 +131,7 @@ run-metagenomic-assembly: metagenomic-assembly-step-1
 
 run-binning-clustering: binning-step-1 binning-step-2
 
-run-taxonomy: taxonomy-step-1
+run-taxonomy: taxonomy-step-1 taxonomy-step-2
 
 tutorial: prepare-tutorial run-quality-control run-coverage run-distance-estimation run-metagenomic-assembly run-binning-clustering run-taxonomy
 

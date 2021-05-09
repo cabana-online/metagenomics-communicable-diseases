@@ -39,4 +39,9 @@ metaphlan_hclust_heatmap.py --in merged_abundance_table.txt --out metaphlan_hclu
 echo "Generated image file metaphlan_hclust.png"
 sleep 2
 
+echo "Converting metaphlan2 data to stamp format."
+metaphlan_to_stamp.pl merged_abundance_table.txt > merged_metaphlan2_tables.spf
+cat merged_metaphlan2_tables.spf
+sleep 2
+
 popd
