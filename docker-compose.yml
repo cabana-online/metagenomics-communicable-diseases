@@ -123,6 +123,8 @@ services:
     image: cabanaonline/stamp:1.0
     container_name: "cabana_tutorial_2--stamp"
     volumes:
+      -  $HOME/.Xauthority:$HOME/.Xauthority
+      -  /tmp/.X11-unix:/tmp/.X11-unix
       - ./scripts:/home/cabana/scripts:cached
       - ./CABANA:/home/cabana/CABANA:cached
       - ./DATA:/home/cabana/data:cached

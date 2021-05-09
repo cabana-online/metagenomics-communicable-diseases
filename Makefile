@@ -117,7 +117,11 @@ taxonomy-step-1:
 	docker exec -ti cabana_tutorial_2--metaphlan2 /bin/bash -c "/home/cabana/scripts/_taxonomy-step-1.sh"
 
 taxonomy-step-2:
-	docker container run -it --env="DISPLAY" --net=host cabanaonline/stamp:1.0
+	scripts/_taxonomy-step-2.sh
+
+functional:
+	echo "Thank you"
+
 
 prepare-tutorial : download-data uncompress-data seqtk-data
 
@@ -132,6 +136,8 @@ run-metagenomic-assembly: metagenomic-assembly-step-1
 run-binning-clustering: binning-step-1 binning-step-2
 
 run-taxonomy: taxonomy-step-1 taxonomy-step-2
+
+run-functional: functional
 
 tutorial: prepare-tutorial run-quality-control run-coverage run-distance-estimation run-metagenomic-assembly run-binning-clustering run-taxonomy
 
