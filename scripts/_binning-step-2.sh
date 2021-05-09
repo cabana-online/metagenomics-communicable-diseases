@@ -27,13 +27,13 @@ cp *.fasta ./bin
 echo "Building reference genome tree,"
 checkm tree --reduced_tree -x fasta bin output
 
-echo "Finding number of  phylogenetically informative marker genes."
+echo "Finding number of phylogenetically informative marker genes."
 checkm tree_qa output
 
 echo "Building marker file on lineage.ms"
 checkm lineage_set output lineage.ms
 
-echo "Identifyng marker genes with lineage.ms."
+echo "Identifying marker genes with lineage.ms."
 checkm analyze -x fasta lineage.ms bin output
 
 echo "Summarizing quality of genome bins."
@@ -44,4 +44,9 @@ checkm lineage_wf --reduced_tree bin output -x fasta -t 4 --tab_table -f checkM_
 
 echo "Displaying result contents."
 cat checkM_output.txt
+sleep 2
+
+echo "Generating plots to assess the quality of the genome bins."
+checkm bin_qa_plot output/ bin/ plots -x fasta
+echo "Plots created in the \"plots\" folder"
 sleep 2

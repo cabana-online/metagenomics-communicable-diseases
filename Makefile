@@ -126,5 +126,5 @@ run-binning-clustering: binning-step-1 binning-step-2
 
 run-taxonomy: taxonomy-step-1
 
-tutorial: prepare-tutorial run-quality-control run-coverage run-distance-estimation run-binning-clustering run-taxonomy
+tutorial: prepare-tutorial run-quality-control run-coverage run-distance-estimation run-metagenomic-assembly run-binning-clustering run-taxonomy
 
