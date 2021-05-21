@@ -119,12 +119,23 @@ services:
       - ./DATA:/home/cabana/data:cached
     entrypoint: ["tail", "-f", "/dev/null"]
 
-  stamp:
-    image: cabanaonline/stamp:1.0
-    container_name: "cabana_tutorial_2--stamp"
+# Stamp is no longer being used due to the complications it has due to the GUI integration and
+# difficulties getting it to work properly. It also uses a no longer supported version of Python.
+#  stamp:
+#    image: cabanaonline/stamp:1.0
+#    container_name: "cabana_tutorial_2--stamp"
+#    volumes:
+#      -  $HOME/.Xauthority:$HOME/.Xauthority
+#      -  /tmp/.X11-unix:/tmp/.X11-unix
+#      - ./scripts:/home/cabana/scripts:cached
+#      - ./CABANA:/home/cabana/CABANA:cached
+#      - ./DATA:/home/cabana/data:cached
+#    entrypoint: ["tail", "-f", "/dev/null"]
+
+  humman2:
+    image: cabanaonline/humann2:1.0
+    container_name: "cabana_tutorial_2--humann2"
     volumes:
-      -  $HOME/.Xauthority:$HOME/.Xauthority
-      -  /tmp/.X11-unix:/tmp/.X11-unix
       - ./scripts:/home/cabana/scripts:cached
       - ./CABANA:/home/cabana/CABANA:cached
       - ./DATA:/home/cabana/data:cached

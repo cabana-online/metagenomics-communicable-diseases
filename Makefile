@@ -119,9 +119,11 @@ taxonomy-step-1:
 taxonomy-step-2:
 	scripts/_taxonomy-step-2.sh
 
-functional:
-	echo "Thank you"
+functional-step-1:
+	docker exec -ti cabana_tutorial_2--humann2 /bin/bash -c "/home/cabana/scripts/_functional-step-1.sh"
 
+functional-step-2:
+	docker exec -ti cabana_tutorial_2--humann2 /bin/bash -c "/home/cabana/scripts/_functional-step-2.sh"
 
 prepare-tutorial : download-data uncompress-data seqtk-data
 
@@ -135,9 +137,9 @@ run-metagenomic-assembly: metagenomic-assembly-step-1
 
 run-binning-clustering: binning-step-1 binning-step-2
 
-run-taxonomy: taxonomy-step-1 taxonomy-step-2
+run-taxonomy: taxonomy-step-1
 
-run-functional: functional
+run-functional: functional-step-1 functional-step-2
 
 tutorial: prepare-tutorial run-quality-control run-coverage run-distance-estimation run-metagenomic-assembly run-binning-clustering run-taxonomy
 
