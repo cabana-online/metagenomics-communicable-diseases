@@ -15,9 +15,15 @@ if [ ! -d "/home/cabana/data/uniref" ]; then
   humann2_databases --download uniref uniref90_diamond /home/cabana/data
 fi
 
+# Creates the folder stores the humman2 results.
+if [ ! -d "humann2-build" ]; then
+  mkdir humann2-build
+fi
+cd humann2-build
+
 echo "Beginning HUMANn2 process. Depending on your computer this might take up to three hours or more."
 sleep 2
-for file in $(ls ../03.CleanLib/*.CoupledReads.fa);do
+for file in $(ls ../../03.CleanLib/*.CoupledReads.fa);do
 
   # Gets filename and directory location.
   DIR=$(dirname $file)
@@ -28,6 +34,7 @@ for file in $(ls ../03.CleanLib/*.CoupledReads.fa);do
   echo "Running HUMAnN2 on ${NAME}."
   humann2 --protein-database=/home/cabana/data/uniref --nucleotide-database=/home/cabana/data/chocophlan --input $file --output $NAME --threads 16 --diamond .
   echo " "
+  exit
 
 done
 
