@@ -34,7 +34,6 @@ for file in $(ls ../../03.CleanLib/*.CoupledReads.fa);do
   echo "Running HUMAnN2 on ${NAME}."
   humann2 --protein-database=/home/cabana/data/uniref --nucleotide-database=/home/cabana/data/chocophlan --input $file --output $NAME --threads 16 --diamond .
   echo " "
-  exit
 
 done
 

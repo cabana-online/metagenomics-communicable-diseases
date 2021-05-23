@@ -48,6 +48,10 @@ shell-multiqc :
 	@echo "Accessing multiqc container..."
 	docker exec -ti cabana_tutorial_2--multiqc /bin/bash
 
+shell-multiqc :
+	@echo "Accessing multiqc container..."
+	docker exec -ti cabana_tutorial_2--multiqc /bin/bash
+
 shell-r :
 	@echo "Accessing r container..."
 	docker exec -ti cabana_tutorial_2--r /bin/bash
@@ -60,9 +64,18 @@ shell-stamp :
 	@echo "Accessing stamp container..."
 	docker exec -ti cabana_tutorial_2--stamp /bin/bash
 
+shell-trimmomatic :
+	@echo "Accessing stamp container..."
+	docker exec -ti cabana_tutorial_2--trimmomatic /bin/bash
+
+shell-r :
+	@echo "Accessing stamp container..."
+	docker exec -ti cabana_tutorial_2--r /bin/bash
+
 r :
 	@echo "Running R prompt..."
 	docker exec -ti cabana_tutorial_2--r R
+
 
 download-data :
 	docker exec -ti cabana_tutorial_2--enveomics /bin/bash -c "/home/cabana/scripts/_download-metagenomic-libraries.sh"
@@ -141,5 +154,5 @@ run-taxonomy: taxonomy-step-1
 
 run-functional: functional-step-1 functional-step-2
 
-tutorial: prepare-tutorial run-quality-control run-coverage run-distance-estimation run-metagenomic-assembly run-binning-clustering run-taxonomy
+tutorial: prepare-tutorial run-quality-control run-coverage run-distance-estimation run-metagenomic-assembly run-binning-clustering run-taxonomy run-functional
 

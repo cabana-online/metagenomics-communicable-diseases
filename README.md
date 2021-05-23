@@ -62,16 +62,30 @@ the results on the `CABANA` folder as described.
   * `make metagenomic-assembly-step-1` - Metagenomic assembly script.
 * `make run-binning-clustering` - Runs the binning and clustering steps from the tutorial.
   * `make binning-step-1` - Binning and clustering step 1.
+  * `make binning-step-2` - Binning and clustering step 2.
+* `make run-taxonomy` - Runs the taxonomy steps from the tutorial.
+  * `make taxonomy-step-1` - Binning and clustering step 1.
+* `make run-functional` - Runs the functional steps from the tutorial.
+  * `make functional-step-1` - Functional step 1.
+  * `make functional-step-2` - Functional step 2.
  
 #### Container shell access.
 
 In order to ease the access to the containers the following commands were created.
 * `make shell-blast` - Shell access to the blast container.
 * `make shell-bmtagger` - Shell access ot the bmtagger container.
+* `make shell-checkm` - Shell access ot the checkm container.
 * `make shell-enveomics` - Shell access to the enveomics container.
-* `make shell-nonpareil` - Shell access to the R with nonpareil container.
+* `make shell-mash` - Shell access to the mash container.
+* `make shell-maxbin2` - Shell access to the maxbin2 container.
+* `make shell-megahit` - Shell access to the megahit container.
+* `make shell-metaphlan2` - Shell access to the metaphlan2 container.
 * `make shell-multiqc` - Shell access to the multiqc container.
 * `make shell-seqtk` - Shell access to the seqtk container.
+* `make shell-r` - Shell access to the r container with nonpareil.
+
+#### Container tools access.
+* `make r` - Start an R session.
 
 ### Repository structure  
 
@@ -92,7 +106,7 @@ available amount of RAM.
 Windows with 16GB of RAM assign and 3 cores of an Intel i7-9750CPU was 3 hours during a clean run (data downloaded for
 the first time).
 * The average time to run the tutorial on a 100/100 MB optic fiber network, and a Lubuntu VMware instance running on
-Windows with 16GB of RAM assign and 3 cores of an Intel i7-9750CPU was 1 hours during a subsequent run (no data download).
+Windows with 16GB of allocated RAM assign and 3 cores of an Intel i7-9750CPU was 1 hours during a subsequent run (no data download).
 
 ### Download size
 
@@ -112,6 +126,11 @@ Data download over a 100/100 MB network.
 | SRR9988205 - 2 | 0:04:09 | 630MB |
 | SRR8555113 - 1 | 0:14:53 | 730MB |
 | SRR8555113 - 2 | 0:03:28 | 751MB |
+| hg38.fa.gz | 0:05:12 | 984MB |
+| chocophlan | 0:23:38 | 5370MB |
+| uniref | 0:25:12 | 5870MB |
+
+Approximate download size excluding docker containers: **18827MB**
 
 ## Contact
 
